@@ -21,7 +21,7 @@ Just as a web developer deploys a live website anyone can open and interact with
 
 > 📸 **Dashboard Preview:**
 
-![Netflix Dashboard](screenshots/dashboard_preview.png)
+![Netflix Dashboard](./screenshorts/dashboard_preview.png)
 
 ---
 
