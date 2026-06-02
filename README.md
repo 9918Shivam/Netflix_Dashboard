@@ -20,7 +20,7 @@ Just as a web developer deploys a live website anyone can open and interact with
 
 > 📸 **Dashboard Preview:**
 
-![Netflix Dashboard](./screenshots/dashboard_preview.png)
+![Netflix Dashboard](screenshots/dashboard_preview.png)
 
 ---
 
@@ -144,25 +144,21 @@ A single-page Power BI dashboard with 7 visuals, 2 slicers, and a clear-all butt
 
 ```dax
 -- Total Titles
-Total Titles = COUNT('NetFlix'[show_id])
+Total Titles = DISTINCTCOUNT('NetFlix'[show_id])
 
 -- Movies Count
-Movies Count = CALCULATE(COUNT('NetFlix'[show_id]),
+Movies Count = CALCULATE(DISTINCTCOUNT('NetFlix'[show_id]),
                 'NetFlix'[type] = "Movie")
 
 -- TV Shows Count
-TV Shows Count = CALCULATE(COUNT('NetFlix'[show_id]),
+TV Shows Count = CALCULATE(DISTINCTCOUNT('NetFlix'[show_id]),
                   'NetFlix'[type] = "TV Show")
 
 -- Country Count
 Country Count = DISTINCTCOUNT('NetFlix'[country])
 
 -- Average Movie Duration by Genre
-Avg Duration =
-CALCULATE(
-    AVERAGE('NetFlix'[duration]),
-    'NetFlix'[type] = "Movie"
-)
+Avg Duration = AVERAGE('NetFlix'[duration])
 ```
 
 ---
