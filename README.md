@@ -10,18 +10,17 @@
 
 ## 📌 Project Overview
 
-This project is an **interactive Netflix Content Analytics Dashboard** built in Microsoft Power BI, analyzing Netflix's global content library of **7,787 titles** across movies, TV shows, genres, countries, release years, ratings, and durations.
+This project is an **interactive Netflix Content Analytics Dashboard** built in Microsoft Power BI, analyzing Netflix's global content library of **7,769 titles** across movies, TV shows, genres, countries, release years, and average durations.
 
 The central business question this dashboard answers:
 
-> **"How has Netflix built its content library — which countries, genres, and content types dominate, and how has the catalog evolved over time?"**
+> **"How has Netflix built its content library — which countries, genres, and content types dominate, what are average runtimes by genre, and how has the catalog evolved over time?"**
 
 Just as a web developer deploys a live website anyone can open and interact with, this dashboard is a **published, filterable report** that media analysts, content strategists, or recruiters can explore in real time.
 
-
 > 📸 **Dashboard Preview:**
 
-![Netflix Dashboard](./screenshorts/dashboard_preview.png)
+![Netflix Dashboard](./screenshots/dashboard_preview.png)
 
 ---
 
@@ -31,7 +30,7 @@ Just as a web developer deploys a live website anyone can open and interact with
 netflix-analytics-dashboard-powerbi/
 │
 ├── 📁 data/
-│   └── NetFlix.csv                    # Raw dataset — 7,787 Netflix titles
+│   └── NetFlix.csv                    # Raw dataset — 7,769 Netflix titles
 │
 ├── 📁 report/
 │   └── Net1.pbix                      # Power BI Desktop report file
@@ -41,13 +40,14 @@ netflix-analytics-dashboard-powerbi/
 │
 └── README.md                          # You are here
 ```
+
 ---
 
 ## 📊 Dataset Description
 
-**Source:** Netflix Titles Dataset (publicly available)
-**File:** `NetFlix.csv`
-**Total Records:** 7,787 titles
+**Source:** Netflix Titles Dataset (publicly available)  
+**File:** `NetFlix.csv`  
+**Total Records:** 7,769 titles  
 **Format:** CSV (flat file, single table)
 
 ### Columns
@@ -73,18 +73,18 @@ netflix-analytics-dashboard-powerbi/
 
 | Visual | Type | What It Shows |
 |---|---|---|
-| **Total Titles** | KPI Card | 7,789 total content pieces on Netflix |
-| **Movies Count** | KPI Card | 5,377 movies in the library |
-| **TV Shows Count** | KPI Card | 2,410 TV shows in the library |
-| **Country Count** | KPI Card | Content spanning 681 unique countries |
-| **Movies Count by Type** | Donut Chart | Content split — Movie vs TV Show vs Director breakdown |
-| **Count of Title by Release Year** | Line Chart | How content volume has grown across decades |
-| **Count of Country by Title** | Horizontal Bar | Which titles are available in multiple countries |
-| **Movies Count by Genres** | Bar Chart | Genre popularity — from Children & Family to Action |
-| **Sum of Release Year by Duration** | Area/Line Chart | Duration distribution across release periods |
+| **Total Titles** | KPI Card | 7,769 total content pieces on Netflix |
+| **Movies Count** | KPI Card | 5,371 movies in the library |
+| **TV Shows Count** | KPI Card | 2,398 TV shows in the library |
+| **Country Count** | KPI Card | Content spanning 115 unique countries |
+| **Content Distribution by Type** | Pie Chart | Movie vs TV Show split — 69.13% Movies, 30.87% TV Shows |
+| **Titles Added by Release Year (1995–2021)** | Bar Chart | Year-on-year catalog growth showing Netflix's content expansion |
+| **Total Title by Country** | Treemap | Which countries produce the most Netflix content |
+| **Total Title by Genre** | Horizontal Bar Chart | Top genres by total title count |
+| **Avg Duration by Genre** | Horizontal Bar Chart | Average runtime (minutes) per genre — e.g. Classic Movies at 119 min |
 | **Country Slicer** | Dropdown | Filter entire dashboard by production country |
 | **Year Added Slicer** | Dropdown | Filter by the year a title was added to Netflix |
-| **Date Added / Year Added Slicer** | Dropdown | Granular date-based filtering |
+| **Clear All Slicers** | Button | Reset all active filters in one click |
 
 ---
 
@@ -92,36 +92,40 @@ netflix-analytics-dashboard-powerbi/
 
 ### ❓ The Business Problem
 
-Netflix's raw content catalog is a flat CSV with 7,787 rows and 12 columns. In that form, it answers nothing. A content strategist asking *"Which genres should we invest in?"* or *"How has our library grown year over year?"* would need to manually filter, pivot, and chart the data in Excel — a slow, error-prone process.
+Netflix's raw content catalog is a flat CSV with 7,769 rows and 12 columns. In that form, it answers nothing. A content strategist asking *"Which genres should we invest in?"*, *"Which genres have the longest runtimes?"*, or *"How has our library grown year over year?"* would need to manually filter, pivot, and chart the data in Excel — a slow, error-prone process.
 
 This dashboard turns that raw file into an **interactive, always-on analytics tool** where every dropdown filter updates every visual simultaneously.
 
 ### ✅ What Was Built
 
-A single-page Power BI dashboard with 8 visuals and 3 slicers covering content type, genre, country, release year, duration, and catalog growth — giving content and business teams a complete view of Netflix's library in one screen.
+A single-page Power BI dashboard with 7 visuals, 2 slicers, and a clear-all button — covering content type, genre, country, release year, and average duration by genre — giving content and business teams a complete view of Netflix's library in one screen.
 
-### 📢 Key Findings from the Real Data
+### 📢 Key Findings from the Data
 
 | # | Finding | Stat |
 |---|---|---|
-| 1 | **Movies dominate the library** | 5,377 Movies (69%) vs 2,410 TV Shows (31%) |
-| 2 | **USA produces the most content by far** | 2,555 titles — nearly 3× more than #2 (India at 923) |
-| 3 | **India is Netflix's #2 content country** | 923 titles — ahead of UK (397), Japan (226), South Korea (183) |
-| 4 | **2018 was the biggest release year** | 1,121 titles released — followed by 2017 (1,012) and 2019 (996) |
-| 5 | **Netflix added the most content in 2019** | 2,136 titles added in 2019 alone — peak catalog expansion year |
-| 6 | **International Movies is the #1 genre** | 2,437 titles — ahead of Dramas (2,106) and Comedies (1,471) |
-| 7 | **TV-MA is the dominant rating** | 2,863 titles rated TV-MA — Netflix leans heavily toward mature content |
-| 8 | **Average movie runtime is 99 minutes** | Range: 3 mins (shortest) to 312 mins (longest) |
-| 9 | **Content additions surged post-2016** | 432 titles in 2016 → 1,661 in 2018 → 2,136 in 2019 — a 5× jump in 3 years |
-| 10 | **South Korea's rise is clear in the data** | 183 titles — strong signal of the K-Drama wave Netflix capitalized on |
+| 1 | **Movies dominate the library** | 5,371 Movies (69.13%) vs 2,398 TV Shows (30.87%) |
+| 2 | **USA produces the most content by far** | Largest block in the country treemap — nearly 3× any other country |
+| 3 | **India is Netflix's #2 content country** | Second largest producer after the United States |
+| 4 | **TV Drama is the #1 genre** | Tops the genre bar chart by total title count |
+| 5 | **International Movies ranks #2 by genre count** | Reflects Netflix's global-first content investment strategy |
+| 6 | **Classic Movies have the longest average runtime** | 119 minutes average — longest of any genre |
+| 7 | **Romantic Movies average 111 minutes** | Second longest average runtime by genre |
+| 8 | **Thrillers average just 98 minutes** | Shortest average runtime among the top genres shown |
+| 9 | **Content additions surged from 2015 onward** | Bar chart shows near-zero additions pre-2010, explosive growth 2015–2019 |
+| 10 | **South Korea, Spain, and Germany appear prominently** | All visible in the country treemap — Netflix's international investment is clear |
 
 ### 💼 Business Insights & Recommendations
 
-1. **International content is Netflix's biggest bet** — with 2,437 International Movies as the top genre, the strategy of funding local-language content globally is deeply embedded in the catalog.
-2. **The 2019 content peak tells a story** — 2,136 titles added that year represents Netflix's heaviest investment period, likely before the subscriber growth slowdown of 2021–22.
-3. **Mature content (TV-MA) is the core audience** — 2,863 TV-MA titles vs 280 TV-Y titles shows Netflix prioritizes adult subscribers over family audiences in volume.
-4. **India is a priority market** — 923 titles makes India the largest non-English content market, validating Netflix's aggressive India originals strategy.
-5. **K-Drama momentum is real** — South Korea at 183 titles is disproportionately large for its population size — reflecting deliberate investment in a high-engagement content category.
+1. **TV Drama's dominance signals audience preference** — with the highest title count of any genre, drama content clearly drives Netflix's catalog strategy across both movies and TV shows.
+
+2. **Classic and Romantic Movies are long-form commitments** — averaging 119 and 111 minutes respectively, these genres require viewers to invest more time. This supports premium or weekend-viewing positioning.
+
+3. **International content is deeply embedded** — International Movies ranking as the #2 genre by count confirms that funding local-language content globally is a structural part of the catalog, not just a marketing angle.
+
+4. **The 2019 content peak tells a story** — the release year bar chart shows peak catalog additions around 2019, representing Netflix's heaviest investment period before the subscriber growth slowdown of 2021–22.
+
+5. **India is a priority market** — appearing as the second-largest country in the treemap validates Netflix's aggressive India originals strategy.
 
 ---
 
@@ -153,28 +157,35 @@ TV Shows Count = CALCULATE(COUNT('NetFlix'[show_id]),
 -- Country Count
 Country Count = DISTINCTCOUNT('NetFlix'[country])
 
--- Average Movie Duration
-Avg Movie Duration =
+-- Average Movie Duration by Genre
+Avg Duration =
 CALCULATE(
     AVERAGE('NetFlix'[duration]),
     'NetFlix'[type] = "Movie"
 )
 ```
-## ❓ Common Interview Questions About This Project
-
-**Q: What problem does this dashboard solve?**
-A: It transforms a flat 7,787-row CSV into an interactive catalog analytics tool — letting content strategists answer questions about genre distribution, country production, content ratings, and catalog growth trends in seconds instead of hours.
-
-**Q: What was your most interesting finding?**
-A: That International Movies is the single largest genre on Netflix — bigger than Dramas and Comedies combined. It shows that Netflix's global-first content strategy isn't just marketing language — it's built directly into the catalog at scale.
-
-**Q: Why Power BI over a simple Excel chart?**
-A: All 8 visuals are connected through one data model. A single country dropdown filter updates every chart at once. You can't replicate that kind of cross-filtering cleanly in Excel.
-
-**Q: What would you add with more data?**
-A: Subscriber engagement data (watch hours, completion rate) to correlate content investment with actual viewership — moving from descriptive analytics (what's in the catalog) to prescriptive analytics (what should be added next).
 
 ---
+
+## ❓ Common Interview Questions About This Project
+
+**Q: What problem does this dashboard solve?**  
+A: It transforms a flat 7,769-row CSV into an interactive catalog analytics tool — letting content strategists answer questions about genre distribution, country production, average runtimes, and catalog growth trends in seconds instead of hours.
+
+**Q: What was your most interesting finding?**  
+A: The average duration chart reveals a clear pattern — Classic Movies average 119 minutes while Thrillers average just 98 minutes. This suggests that older, nostalgic content skews longer while modern genre films are getting shorter — a reflection of changing viewer attention spans.
+
+**Q: What does the Avg Duration by Genre chart add over the Total Title chart?**  
+A: Volume alone doesn't tell the full story. A genre can have fewer titles but require much more viewer time per title. The duration chart adds a quality-of-investment layer — International Movies, for example, rank #2 in count *and* average 109 minutes, making them a high-volume AND high-commitment category.
+
+**Q: Why Power BI over a simple Excel chart?**  
+A: All 7 visuals are connected through one data model. A single country dropdown filter updates every chart at once — the genre mix, duration averages, release year trend, and KPI cards all refresh simultaneously. You can't replicate that cross-filtering cleanly in Excel.
+
+**Q: What would you add with more data?**  
+A: Subscriber engagement data (watch hours, completion rate per genre) to correlate content investment with actual viewership — moving from descriptive analytics (what's in the catalog) to prescriptive analytics (what should be added next).
+
+---
+
 ## 📄 License
 
 The Netflix dataset used in this project is publicly available for educational and portfolio purposes.
